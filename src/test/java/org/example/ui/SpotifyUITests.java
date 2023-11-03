@@ -1,12 +1,15 @@
 package org.example.ui;
 
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.example.pajeobject.SpotifyHomePage;
 import org.example.pajeobject.SpotifyLoginPage;
 import org.example.pajeobject.SpotifySearchPage;
 import org.example.pajeobject.SpotifyUserPage;
 import org.example.ui.BaseTest;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -20,7 +23,14 @@ public class SpotifyUITests extends BaseTest {
 
     @BeforeMethod
     public void setUp() {
-        setUpWebDriver();
+        WebDriverManager.chromedriver().setup();
+        webDriver.manage().window().maximize();
+    }
+
+    @AfterMethod
+    public void closeDriver() {
+        webDriver.close();
+        webDriver.quit();
     }
     @DataProvider(name = "wrongCredentials")
     public Object[][] wrongCredentials() {
@@ -170,12 +180,6 @@ public class SpotifyUITests extends BaseTest {
 
     }
 
-    /*@AfterMethod
-    public void closeDriver() {
-        webDriver.quit();
-    }
-
-     */
 
 
 }
