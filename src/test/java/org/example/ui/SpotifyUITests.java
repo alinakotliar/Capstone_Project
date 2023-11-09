@@ -2,6 +2,8 @@ package org.example.ui;
 
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.example.data.TestData;
+import org.example.enums.SpotifyConstants;
 import org.example.pajeobject.SpotifyHomePage;
 import org.example.pajeobject.SpotifyLoginPage;
 import org.example.pajeobject.SpotifySearchPage;
@@ -79,7 +81,7 @@ public class SpotifyUITests extends BaseTest {
                 .openProfileInfoModule();
         String userInfoText = loginPage
                 .open()
-                .fillloginform("alina.kotliar.personal@gmail.com", "AccountforTest5!")
+                .fillloginform(TestData.email, TestData.password)
                 .signIn()
                 .navigateToWebPlayer()
                 .logToProfile()
@@ -95,7 +97,7 @@ public class SpotifyUITests extends BaseTest {
                 .openProfileInfoModule();
         loginPage
                 .open()
-                .fillloginform("alina.kotliar.personal@gmail.com", "AccountforTest5!")
+                .fillloginform(TestData.email, TestData.password)
                 .signIn()
                 .navigateToWebPlayer()
                 .createFirstPlaylist();
@@ -113,7 +115,7 @@ public class SpotifyUITests extends BaseTest {
                 .openProfileInfoModule();
         String actualPlaylistName = loginPage
                 .open()
-                .fillloginform("alina.kotliar.personal@gmail.com", "AccountforTest5!")
+                .fillloginform(TestData.email, TestData.password)
                 .signIn()
                  .navigateToWebPlayer()
                  .clickCreatePlaylist()
@@ -129,7 +131,7 @@ public class SpotifyUITests extends BaseTest {
                 .openProfileInfoModule();
         loginPage
                 .open()
-                .fillloginform("alina.kotliar.personal@gmail.com", "AccountforTest5!")
+                .fillloginform(TestData.email, TestData.password)
                 .signIn()
                 .navigateToWebPlayer()
                 .clickCreatePlaylist();
@@ -138,7 +140,7 @@ public class SpotifyUITests extends BaseTest {
                 .searchInput("Whitney Elizabeth Houston")
                 .addTrackToPlaylist()
                 .goToPlaylist();
-        boolean isSongInPlaylist = searchPage.isSongInPlaylist("Whitney Houston");
+        boolean isSongInPlaylist = searchPage.isSongInPlaylist(TestData.searchQuery);
         Assert.assertTrue(isSongInPlaylist, "Song not added to playlist");
 
     }
@@ -150,13 +152,13 @@ public class SpotifyUITests extends BaseTest {
                 .openProfileInfoModule();
         loginPage
                 .open()
-                .fillloginform("alina.kotliar.personal@gmail.com", "AccountforTest5!")
+                .fillloginform(TestData.email, TestData.password)
                 .signIn()
                 .navigateToWebPlayer()
                 .clickCreatePlaylist();
         searchPage
                 .clickSearchIcon()
-                .searchInput("Whitney Elizabeth Houston")
+                .searchInput(TestData.searchQuery)
                 .addSecondTrackToPlaylist()
                 .goToPlaylist()
                 .deleteTrackFromPlaylist();
@@ -171,7 +173,7 @@ public class SpotifyUITests extends BaseTest {
                     .openProfileInfoModule();
             loginPage
                     .open()
-                    .fillloginform("alina.kotliar.personal@gmail.com", "AccountforTest5!")
+                    .fillloginform(TestData.email, TestData.password)
                     .signIn()
                     .navigateToWebPlayer()
                     .clickCreatePlaylist()
