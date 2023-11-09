@@ -33,7 +33,7 @@ public class SpotifyUserPage extends BasePage {
     private WebElement playlistNameInput;
     @FindBy(xpath = "//button[@data-testid='playlist-edit-details-save-button']")
     private WebElement savePlaylistButton;
-    @FindBy(xpath = "//h1[text()='My favourite playlist']")
+    @FindBy(xpath = "//h1[text()='Updated Playlist']")
     private WebElement playlistName;
 
     @FindBy(xpath = "//button[contains(span, 'Создать плейлист')]")
@@ -65,6 +65,9 @@ public class SpotifyUserPage extends BasePage {
     public SpotifyUserPage(WebDriver webDriver) {
         super(webDriver);
 
+    }
+    public void init(WebDriver driver) {
+        this.webDriver = driver;
     }
     public SpotifyUserPage navigateToWebPlayer() {
         waitForVisibility(webPlayerButton);

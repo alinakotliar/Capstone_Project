@@ -26,12 +26,14 @@ public class SpotifyUITests extends BaseTest {
         WebDriverManager.chromedriver().setup();
         webDriver.manage().window().maximize();
     }
-
+/*
     @AfterMethod
     public void closeDriver() {
         webDriver.close();
         webDriver.quit();
     }
+
+ */
     @DataProvider(name = "wrongCredentials")
     public Object[][] wrongCredentials() {
         return new Object[][] {

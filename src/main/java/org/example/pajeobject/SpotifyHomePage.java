@@ -10,6 +10,9 @@ public class SpotifyHomePage extends BasePage {
     public SpotifyHomePage(WebDriver webDriver){
         super(webDriver);
     }
+    public void init(WebDriver driver) {
+        this.webDriver = driver;
+    }
     public SpotifyHomePage openLoginForm() {
         webDriver.get("https://open.spotify.com/");
         return this;

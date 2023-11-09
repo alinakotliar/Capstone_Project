@@ -14,7 +14,7 @@ public class SpotifySearchPage extends BasePage {
     private WebElement searchInputField;
     @FindBy(xpath = "//button[@aria-checked='false' and span[text()='Треки']]")
     private WebElement trackTab;
-    @FindBy(xpath = "//div[@role='row' and @aria-rowindex='3']")
+    @FindBy(xpath = "//div[@role='row' and @aria-rowindex='6']")
     private WebElement trackId;
     @FindBy(xpath = "//div[@role='row' and @aria-rowindex='8']")
     private WebElement secondtrackId;
@@ -22,7 +22,8 @@ public class SpotifySearchPage extends BasePage {
     private WebElement searchIcon;
     @FindBy(xpath = "//span[text()='Добавить в плейлист']")
     private WebElement addToPlaylistMenu;
-    @FindBy(xpath = "//li[contains(@class, 'DuEPSADpSwCcO880xjUG')][2]")
+    @FindBy(xpath = "//button[.//span[text()='My new Playlist']]")
+    //li[contains(@class, 'DuEPSADpSwCcO880xjUG')][2]
     private WebElement newCreatedPlaylistID;
     @FindBy(xpath = "//li[contains(@aria-posinset, '1')]")
     private WebElement newCreatedPlaylistTab;
@@ -40,6 +41,9 @@ public class SpotifySearchPage extends BasePage {
 
     public SpotifySearchPage(WebDriver webDriver){
         super(webDriver);
+    }
+    public void init(WebDriver driver) {
+        this.webDriver = driver;
     }
 
     public SpotifySearchPage clickSearchIcon() throws InterruptedException {

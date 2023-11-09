@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class BaseTest {
-    protected final WebDriver webDriver = new WebDriverFactory().getWebDriver();
+    protected WebDriver webDriver = new WebDriverFactory().getWebDriver();
 
     protected void setUpWebDriver() {
         webDriver.manage().window().maximize();

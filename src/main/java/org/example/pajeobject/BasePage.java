@@ -1,7 +1,6 @@
 package org.example.pajeobject;
 
 import org.example.waits.WaitUtils;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -21,6 +20,10 @@ public abstract class BasePage {
     }
     public void waitForVisibility(WebElement element) {
         WaitUtils.waitForVisibility(webDriver, element);
+    }
+    public void waitForClicability(WebElement element){
+            WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
 }

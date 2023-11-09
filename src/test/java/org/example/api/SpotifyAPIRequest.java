@@ -1,28 +1,20 @@
 package org.example.api;
 
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.example.dto.CreatePlaylistRequest;
 import org.example.dto.PlaylistBody;
-import org.example.dto.PlaylistTrackRequest;
-import org.example.dto.RemoveTracksRequest;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
+import static org.example.enums.SpotifyConstants.*;
 
 
 public class SpotifyAPIRequest {
-    private static final String BASE_URL = "https://api.spotify.com/v1";
-    private static String accessToken;  // Define accessToken
 
-    public static void setAccessToken(String token) {
-        accessToken = token;
-    }
 
     public static Response createPlaylist(String accessToken, String userId, CreatePlaylistRequest playlistRequest) {
         return given()
@@ -86,4 +78,16 @@ public class SpotifyAPIRequest {
 
         return response.jsonPath().getString("snapshot_id");
     }
+
+    public static String createPlaylistViaAPI(String accessToken, String userId, CreatePlaylistRequest playlistRequest) {
+        Response response = createPlaylist(accessToken, userId, playlistRequest);
+
+        if (response.getStatusCode() == 201) {
+            // Playlist created successfully, extract and return the playlist ID
+            return response.jsonPath().getString("id");
+        } else {
+            return null;
+        }
+    }
+
 }

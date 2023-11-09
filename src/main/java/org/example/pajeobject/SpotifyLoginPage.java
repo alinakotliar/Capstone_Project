@@ -28,6 +28,9 @@ public class SpotifyLoginPage extends BasePage{
     public SpotifyLoginPage(WebDriver webDriver){
         super(webDriver);
     }
+    public void init(WebDriver driver) {
+        this.webDriver = driver;
+    }
     public SpotifyLoginPage open() {
         webDriver.get("https://accounts.spotify.com/login");
         return this;
